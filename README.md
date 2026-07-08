@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/brand/logo-horizontal.svg" alt="Duty Loops" width="680">
+  <img src="assets/brand/logo-horizontal.png" alt="Duty Loops" width="680">
 </p>
 
 Scene-specific AI workers for Codex and Claude.
