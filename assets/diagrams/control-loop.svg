@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 620" role="img" aria-labelledby="title desc">
+  <title id="title">Duty Loop control cycle</title>
+  <desc id="desc">A loop cycle from wakeup through context, judgment, gates, outcome, writeback, and review.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0l10 5-10 5z" fill="#17212b"/>
+    </marker>
+    <style>
+      .title{font:800 32px Inter,Arial,sans-serif;fill:#17212b}
+      .label{font:750 22px Inter,Arial,sans-serif;fill:#17212b}
+      .small{font:500 15px Inter,Arial,sans-serif;fill:#51606d}
+      .node{fill:#fff;stroke:#d6dde4;stroke-width:2}
+      .line{fill:none;stroke:#17212b;stroke-width:3;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1060" height="620" fill="#ffffff"/>
+  <text x="62" y="70" class="title">The Duty Loop</text>
+  <text x="62" y="104" class="small">One bounded worker turn, repeated by the host scheduler.</text>
+
+  <circle cx="530" cy="314" r="188" fill="#f7f9fb" stroke="#e6eaee" stroke-width="2"/>
+  <path d="M530 126c104 0 188 84 188 188 0 73-42 137-104 168" fill="none" stroke="#17212b" stroke-width="12" stroke-linecap="round"/>
+  <path d="M530 502c-104 0-188-84-188-188 0-73 42-137 104-168" fill="none" stroke="#17212b" stroke-width="12" stroke-linecap="round"/>
+  <path d="M628 110l54 44-68 24z" fill="#10a7ad"/>
+  <path d="M432 518l-54-44 68-24z" fill="#10a7ad"/>
+
+  <g transform="translate(434 116)">
+    <rect class="node" width="192" height="72" rx="12"/>
+    <text x="34" y="32" class="label">1. Wake</text>
+    <text x="34" y="56" class="small">schedule, event, manual</text>
+  </g>
+  <g transform="translate(690 254)">
+    <rect class="node" width="220" height="80" rx="12"/>
+    <text x="30" y="34" class="label">2. Context</text>
+    <text x="30" y="58" class="small">fresh facts + source health</text>
+  </g>
+  <g transform="translate(610 438)">
+    <rect class="node" width="228" height="80" rx="12"/>
+    <text x="30" y="34" class="label">3. Judge</text>
+    <text x="30" y="58" class="small">quiet, notify, ask, act</text>
+  </g>
+  <g transform="translate(222 438)">
+    <rect class="node" width="226" height="80" rx="12"/>
+    <text x="30" y="34" class="label">4. Gate</text>
+    <text x="30" y="58" class="small">stop before unsafe actions</text>
+  </g>
+  <g transform="translate(140 254)">
+    <rect class="node" width="222" height="80" rx="12"/>
+    <text x="30" y="34" class="label">5. Writeback</text>
+    <text x="30" y="58" class="small">append one run row</text>
+  </g>
+  <g transform="translate(376 286)">
+    <rect width="308" height="84" rx="18" fill="#17212b"/>
+    <text x="42" y="38" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="800">Thin control, rich context</text>
+    <path d="M42 58h96l18-32 26 54 16-22h70" fill="none" stroke="#f2a900" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

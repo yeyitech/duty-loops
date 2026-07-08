@@ -2,6 +2,7 @@
 .env.*
 !.env.example
 node_modules/
+tmp/
 .DS_Store
 
 # Runtime state for real blueprints. Keep curated fixtures committed explicitly.

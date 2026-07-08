@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 680" role="img" aria-labelledby="title desc">
+  <title id="title">Duty Loops architecture</title>
+  <desc id="desc">Schedulers wake Codex or Claude, which reads the blueprint, context, state, and logs, then writes back a decision.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0l10 5-10 5z" fill="#17212b"/>
+    </marker>
+    <style>
+      .label{font:700 24px Inter,Arial,sans-serif;fill:#17212b}
+      .small{font:500 16px Inter,Arial,sans-serif;fill:#51606d}
+      .box{fill:#fff;stroke:#d6dde4;stroke-width:2;rx:14}
+      .dark{fill:#17212b}
+      .teal{fill:#10a7ad}
+      .amber{fill:#f2a900}
+      .line{fill:none;stroke:#17212b;stroke-width:3;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1180" height="680" fill="#f7f9fb"/>
+  <text x="64" y="70" class="label" font-size="34">Duty Loops Architecture</text>
+  <text x="64" y="104" class="small">Thin control around Codex or Claude: wake, load context, judge, gate, write back.</text>
+
+  <rect x="64" y="150" width="220" height="116" class="box"/>
+  <circle cx="100" cy="188" r="13" class="teal"/>
+  <text x="128" y="194" class="label">Wakeup Host</text>
+  <text x="96" y="228" class="small">cron, Actions, Feishu,</text>
+  <text x="96" y="250" class="small">Codex, Claude routine</text>
+
+  <rect x="64" y="374" width="220" height="124" class="box"/>
+  <circle cx="100" cy="412" r="13" class="amber"/>
+  <text x="128" y="418" class="label">Connectors</text>
+  <text x="96" y="452" class="small">collect compact facts</text>
+  <text x="96" y="474" class="small">and source health</text>
+
+  <rect x="386" y="120" width="286" height="104" class="box"/>
+  <text x="420" y="164" class="label">BLUEPRINT.md</text>
+  <text x="420" y="194" class="small">role, triggers, gates, policy</text>
+
+  <rect x="386" y="258" width="286" height="104" class="box"/>
+  <text x="420" y="302" class="label">context/latest.json</text>
+  <text x="420" y="332" class="small">fresh facts, source health</text>
+
+  <rect x="386" y="396" width="286" height="104" class="box"/>
+  <text x="420" y="440" class="label">state + runs</text>
+  <text x="420" y="470" class="small">memory, gates, decisions</text>
+
+  <rect x="764" y="218" width="286" height="168" rx="18" fill="#17212b"/>
+  <text x="804" y="274" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="800">Codex / Claude</text>
+  <text x="804" y="312" fill="#d8e4ec" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="500">judge the messy parts</text>
+  <path d="M804 346h188" stroke="#10a7ad" stroke-width="8" stroke-linecap="round"/>
+  <path d="M804 346h72l18-42 30 78 18-36h50" stroke="#f2a900" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="794" y="468" width="226" height="116" class="box"/>
+  <text x="830" y="510" class="label">Outcome</text>
+  <text x="830" y="540" class="small">quiet, notify, ask, act</text>
+  <text x="830" y="562" class="small">then write back one row</text>
+
+  <path d="M284 208h82" class="line"/>
+  <path d="M284 436h82" class="line"/>
+  <path d="M672 172c80 0 80 92 92 118" class="line"/>
+  <path d="M672 310h74" class="line"/>
+  <path d="M672 448c80 0 80-92 92-118" class="line"/>
+  <path d="M907 386v64" class="line"/>
+  <path d="M794 526H706c-48 0-72-24-72-72" class="line"/>
+</svg>

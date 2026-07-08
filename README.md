@@ -1,4 +1,6 @@
-# Duty Loops
+<p align="center">
+  <img src="assets/brand/logo-horizontal.svg" alt="Duty Loops" width="680">
+</p>
 
 Scene-specific AI workers for Codex and Claude.
 
@@ -118,6 +120,8 @@ private operating state in the downstream scenario workspace.
 
 ## Method
 
+![Duty Loop control cycle](assets/diagrams/control-loop.svg)
+
 Duty Loops uses a small control loop:
 
 1. wake from a schedule, event, or manual request;
@@ -128,8 +132,9 @@ Duty Loops uses a small control loop:
 6. write back exactly one run row;
 7. review the loop periodically for noise, stale context, and missing gates.
 
-Read [docs/method.md](docs/method.md) for the design method and
-[docs/build-a-duty-loop.md](docs/build-a-duty-loop.md) for the build path.
+Read [docs/method.md](docs/method.md) for the design method,
+[docs/build-a-duty-loop.md](docs/build-a-duty-loop.md) for the build path, and
+[docs/visuals.md](docs/visuals.md) for logo and diagram assets.
 
 ## Codex And Claude
 
@@ -146,6 +151,7 @@ See [docs/codex.md](docs/codex.md) and [docs/claude.md](docs/claude.md).
 
 - [Roadmap](ROADMAP.md)
 - [Contributing](CONTRIBUTING.md)
+- [Visual system](docs/visuals.md)
 - [License](LICENSE)
 
 ## Maintenance Model

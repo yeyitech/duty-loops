@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Duty Loops logo</title>
+  <desc id="desc">A bold agent core inside a segmented duty loop, with live context nodes and a central signal gate.</desc>
+  <defs>
+    <radialGradient id="core" cx="50%" cy="44%" r="62%">
+      <stop offset="0" stop-color="#1734ff"/>
+      <stop offset=".42" stop-color="#090d2f"/>
+      <stop offset="1" stop-color="#020417"/>
+    </radialGradient>
+    <linearGradient id="ringA" x1="80" y1="78" x2="432" y2="436">
+      <stop offset="0" stop-color="#0df5ff"/>
+      <stop offset=".46" stop-color="#7a32ff"/>
+      <stop offset="1" stop-color="#ff2bc2"/>
+    </linearGradient>
+    <linearGradient id="ringB" x1="74" y1="410" x2="440" y2="120">
+      <stop offset="0" stop-color="#2c55ff"/>
+      <stop offset=".52" stop-color="#00ffc6"/>
+      <stop offset="1" stop-color="#ff5a1f"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.00 0 0 0 0 0.86 0 0 0 0 1.00 0 0 0 .55 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="#ffffff"/>
+  <circle cx="256" cy="256" r="106" fill="url(#core)"/>
+  <path d="M170 104a178 178 0 0 1 172 0" fill="none" stroke="#070b22" stroke-width="16" stroke-linecap="round"/>
+  <path d="M408 168a178 178 0 0 1 0 176" fill="none" stroke="#070b22" stroke-width="16" stroke-linecap="round" stroke-dasharray="72 26"/>
+  <path d="M342 408a178 178 0 0 1-172 0" fill="none" stroke="#070b22" stroke-width="16" stroke-linecap="round"/>
+  <path d="M104 344a178 178 0 0 1 0-176" fill="none" stroke="#070b22" stroke-width="16" stroke-linecap="round" stroke-dasharray="72 26"/>
+  <path d="M166 112a180 180 0 0 1 92-34" fill="none" stroke="url(#ringA)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M428 252a180 180 0 0 1-36 108" fill="none" stroke="url(#ringB)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M84 260a180 180 0 0 1 36-108" fill="none" stroke="url(#ringB)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M202 230l54-36 54 36v68l-54 36-54-36z" fill="none" stroke="#08d9ff" stroke-width="11" stroke-linejoin="round"/>
+  <path d="M256 196v60l-54 42M256 256l54 42" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="256" cy="256" r="31" fill="#ffb000" filter="url(#glow)"/>
+  <circle cx="256" cy="166" r="25" fill="#00ffd1" filter="url(#glow)"/>
+  <circle cx="166" cy="286" r="25" fill="#00d7ff" filter="url(#glow)"/>
+  <circle cx="346" cy="286" r="25" fill="#ff2bc2" filter="url(#glow)"/>
+  <circle cx="256" cy="166" r="10" fill="#ffffff" opacity=".55"/>
+  <circle cx="256" cy="72" r="27" fill="#ff5a1f"/>
+  <circle cx="76" cy="356" r="27" fill="#2c55ff"/>
+  <circle cx="436" cy="356" r="27" fill="#19e07f"/>
+</svg>
