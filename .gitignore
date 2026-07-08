@@ -18,3 +18,5 @@ blueprints/*/state/local.json
 !blueprints/metric-sentinel/context/latest.json
 !blueprints/content-pulse/logs/runs.jsonl
 !blueprints/content-pulse/context/latest.json
+!blueprints/repo-steward/logs/runs.jsonl
+!blueprints/repo-steward/context/latest.json

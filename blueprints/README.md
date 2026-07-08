@@ -12,6 +12,16 @@ Use when the worker should watch pull requests, CI, review state, mergeability,
 and owner attention. This is a good first loop because it has clear source
 facts and clear human gates.
 
+## Repo Steward
+
+[Open blueprint](repo-steward/BLUEPRINT.md)
+
+Use when the worker should watch GitHub repository operations: issues,
+discussions, contributor experience, docs first impression, release readiness,
+roadmap drift, and community signals. This loop complements PR Keeper by
+focusing on maintainer attention and public repo health rather than individual
+code-review state.
+
 ## Market Watch
 
 [Open blueprint](market-watch/BLUEPRINT.md)

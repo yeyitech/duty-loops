@@ -81,6 +81,7 @@ Keep it lightweight: context, state, logs, notification policy, and human gates.
 ## Included Blueprints
 
 - [PR Keeper](blueprints/pr-keeper/BLUEPRINT.md): PR, CI, review, and merge-readiness worker.
+- [Repo Steward](blueprints/repo-steward/BLUEPRINT.md): GitHub repository operations, community, docs, and release-readiness worker.
 - [Market Watch](blueprints/market-watch/BLUEPRINT.md): market theme, portfolio exposure, news, and post-close review worker.
 - [Metric Sentinel](blueprints/metric-sentinel/BLUEPRINT.md): product, business, or operations metric worker.
 - [Content Pulse](blueprints/content-pulse/BLUEPRINT.md): publishing cadence, audience response, and draft opportunity worker.

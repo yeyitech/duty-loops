@@ -1,0 +1,25 @@
+{
+  "schema_version": "duty_loop_state_v1",
+  "loop_id": "repo-steward",
+  "title": "Repo Steward",
+  "created_at": "2026-07-08T00:00:00.000Z",
+  "memory": [
+    {
+      "kind": "policy",
+      "text": "Public replies, official commitments, issue close/lock, release publishing, and governance changes are human gates."
+    },
+    {
+      "kind": "preference",
+      "text": "Prefer one concrete maintainer action over broad repository advice."
+    },
+    {
+      "kind": "preference",
+      "text": "Do not notify on unchanged queue age unless community trust or release readiness changes."
+    }
+  ],
+  "open_gates": [],
+  "notification": {
+    "last_notified_at": null,
+    "recent_keys": []
+  }
+}

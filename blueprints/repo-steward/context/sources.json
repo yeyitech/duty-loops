@@ -1,0 +1,27 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "github-repo-health",
+      "kind": "github",
+      "description": "Repository metadata, issue queue, discussions, PR summary, releases, labels, milestones, and contributor activity",
+      "connector": "GitHub CLI, GitHub API, GitHub MCP, or manual fixture"
+    },
+    {
+      "id": "docs-first-impression",
+      "kind": "documentation",
+      "description": "README, quickstart, contributing guide, examples, changelog, and broken-link state",
+      "connector": "local markdown scan, link checker, docs build, or manual review"
+    },
+    {
+      "id": "community-signals",
+      "kind": "community",
+      "description": "Stars/forks trend, package registry signals, social mentions, support channels, and repeated user questions",
+      "connector": "GitHub traffic, npm/PyPI/registry API, RSS, search, forum export, or manual snapshot"
+    }
+  ],
+  "notes": [
+    "Keep private maintainer notes and raw moderation evidence out of committed fixtures.",
+    "Public replies and official commitments remain human gates."
+  ]
+}
