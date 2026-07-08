@@ -1,0 +1,33 @@
+{
+  "schema_version": "duty_loop_latest_context_v1",
+  "generated_at": "2026-07-08T00:00:00.000Z",
+  "facts": [
+    {
+      "id": "account-alpha-usage",
+      "kind": "account_health",
+      "state": "at_risk",
+      "usage_delta_pct": -38,
+      "summary": "A key account's weekly active seats dropped 38% while renewal review is within 30 days."
+    },
+    {
+      "id": "ticket-cluster-export",
+      "kind": "support_cluster",
+      "state": "unresolved",
+      "count": 3,
+      "summary": "Three support tickets mention export reliability; draft internal risk note before customer outreach."
+    },
+    {
+      "id": "follow-up-success-plan",
+      "kind": "commitment",
+      "state": "overdue",
+      "summary": "Promised success-plan update is overdue by 2 days and needs owner approval before sending."
+    }
+  ],
+  "source_health": [
+    {
+      "source": "account-usage",
+      "status": "fixture",
+      "checked_at": "2026-07-08T00:00:00.000Z"
+    }
+  ]
+}

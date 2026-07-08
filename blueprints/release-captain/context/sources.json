@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "release-state",
+      "kind": "release",
+      "description": "Milestone, open blockers, CI, package health, release draft, tags, and version state",
+      "connector": "GitHub CLI/API, package manager dry run, CI API, or fixture"
+    },
+    {
+      "id": "release-docs",
+      "kind": "documentation",
+      "description": "Changelog, migration guide, README, examples, release notes, and public announcement draft",
+      "connector": "local markdown scan, docs build, or manual review"
+    }
+  ],
+  "notes": [
+    "Release publishing, tags, public dates, and scope changes are human gates.",
+    "Fixture data should not include private customer rollout details."
+  ]
+}

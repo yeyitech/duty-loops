@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "package-registry",
+      "kind": "dependency_registry",
+      "description": "Package releases, deprecations, license metadata, and release notes",
+      "connector": "npm/PyPI/Cargo/Maven API, Dependabot, lockfile parser, or fixture"
+    },
+    {
+      "id": "security-advisories",
+      "kind": "security",
+      "description": "Security advisories, severity, affected versions, fix versions, and exposure notes",
+      "connector": "GitHub Security Advisory, OSV, Snyk export, or fixture"
+    }
+  ],
+  "notes": [
+    "Do not commit private vulnerability evidence or embargoed advisory details.",
+    "Dependency changes and security disclosures remain human gates."
+  ]
+}

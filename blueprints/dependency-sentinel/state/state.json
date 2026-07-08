@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_state_v1",
+  "loop_id": "dependency-sentinel",
+  "title": "Dependency Sentinel",
+  "created_at": "2026-07-08T00:00:00.000Z",
+  "memory": [
+    {
+      "kind": "policy",
+      "text": "Dependency changes, license acceptance, lockfile changes, and security disclosures are human gates."
+    },
+    {
+      "kind": "preference",
+      "text": "Do not notify on every patch release; notify only when exposure, severity, or compatibility changes."
+    }
+  ],
+  "open_gates": [],
+  "notification": {
+    "last_notified_at": null,
+    "recent_keys": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "account-usage",
+      "kind": "product_usage",
+      "description": "Usage deltas, seat activity, feature adoption, and freshness",
+      "connector": "warehouse query, product analytics API, CSV export, or fixture"
+    },
+    {
+      "id": "support-and-crm",
+      "kind": "customer_context",
+      "description": "Tickets, renewal dates, success-plan commitments, meeting notes, and account owner",
+      "connector": "CRM, support desk, notes app, or manual digest"
+    }
+  ],
+  "notes": [
+    "Do not commit customer names or private account details in public fixtures.",
+    "Customer outreach and commercial commitments remain human gates."
+  ]
+}

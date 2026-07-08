@@ -1,0 +1,31 @@
+{
+  "schema_version": "duty_loop_latest_context_v1",
+  "generated_at": "2026-07-08T00:00:00.000Z",
+  "facts": [
+    {
+      "id": "milestone-0-2",
+      "kind": "milestone",
+      "state": "drifting",
+      "summary": "0.2 milestone has one open docs blocker and package dry-run has not been recorded."
+    },
+    {
+      "id": "breaking-change-docs",
+      "kind": "docs_gap",
+      "state": "blocked",
+      "summary": "A breaking CLI flag rename is listed in merged PRs but not in the migration notes."
+    },
+    {
+      "id": "release-draft",
+      "kind": "release",
+      "state": "ready",
+      "summary": "Release draft exists, but publishing requires owner approval after docs gap is resolved."
+    }
+  ],
+  "source_health": [
+    {
+      "source": "release-state",
+      "status": "fixture",
+      "checked_at": "2026-07-08T00:00:00.000Z"
+    }
+  ]
+}

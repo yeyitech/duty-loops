@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_state_v1",
+  "loop_id": "meeting-brief",
+  "title": "Meeting Brief",
+  "created_at": "2026-07-08T00:00:00.000Z",
+  "memory": [
+    {
+      "kind": "policy",
+      "text": "Sending notes, changing agendas, and committing decisions are human gates."
+    },
+    {
+      "kind": "preference",
+      "text": "Briefs should be short: purpose, decision needed, risks, and suggested prep."
+    }
+  ],
+  "open_gates": [],
+  "notification": {
+    "last_notified_at": null,
+    "recent_keys": []
+  }
+}

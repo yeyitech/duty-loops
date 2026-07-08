@@ -1,0 +1,37 @@
+{
+  "schema_version": "duty_loop_latest_context_v1",
+  "generated_at": "2026-07-08T00:00:00.000Z",
+  "facts": [
+    {
+      "id": "meeting-partner-review",
+      "kind": "meeting",
+      "state": "at_risk",
+      "starts_in_minutes": 45,
+      "summary": "Partner review starts soon; agenda mentions pricing approval, but owner stance is not recorded."
+    },
+    {
+      "id": "action-item-demo-data",
+      "kind": "action_item",
+      "state": "overdue",
+      "summary": "Demo-data cleanup from the previous meeting is overdue and may block today's walkthrough."
+    },
+    {
+      "id": "meeting-weekly-sync",
+      "kind": "meeting",
+      "state": "routine",
+      "summary": "Weekly internal sync has agenda and no open owner decision."
+    }
+  ],
+  "source_health": [
+    {
+      "source": "calendar-agenda",
+      "status": "fixture",
+      "checked_at": "2026-07-08T00:00:00.000Z"
+    },
+    {
+      "source": "meeting-memory",
+      "status": "fixture",
+      "checked_at": "2026-07-08T00:00:00.000Z"
+    }
+  ]
+}

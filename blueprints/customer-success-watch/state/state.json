@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_state_v1",
+  "loop_id": "customer-success-watch",
+  "title": "Customer Success Watch",
+  "created_at": "2026-07-08T00:00:00.000Z",
+  "memory": [
+    {
+      "kind": "policy",
+      "text": "Customer outreach, pricing, credits, escalation, and commitments are human gates."
+    },
+    {
+      "kind": "preference",
+      "text": "Prefer account-specific evidence over generic churn-risk advice."
+    }
+  ],
+  "open_gates": [],
+  "notification": {
+    "last_notified_at": null,
+    "recent_keys": []
+  }
+}

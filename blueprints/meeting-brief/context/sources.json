@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "calendar-agenda",
+      "kind": "calendar",
+      "description": "Upcoming meetings, participants, agenda text, and schedule changes",
+      "connector": "calendar API, Feishu calendar, Google Calendar, or fixture"
+    },
+    {
+      "id": "meeting-memory",
+      "kind": "notes",
+      "description": "Previous decisions, open action items, meeting notes, and relevant docs",
+      "connector": "local notes, doc system, task app, meeting transcript, or manual digest"
+    }
+  ],
+  "notes": [
+    "Store brief summaries and document pointers, not raw transcripts.",
+    "Changing agendas and sending follow-ups remain human gates."
+  ]
+}

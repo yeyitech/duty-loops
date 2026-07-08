@@ -16,6 +16,7 @@ Usage:
   dutyloops copy <source-loop-id> <new-loop-id> [--title <title>]
   dutyloops status <loop-id>
   dutyloops context <loop-id> [--slot <slot>] [--trigger <trigger>] [--reason <text>]
+  dutyloops sandbox <loop-id|--all> [--slot <slot>] [--trigger <trigger>] [--writeback]
   dutyloops writeback <loop-id> --decision quiet|notify|ask|act --summary <text> [--material-change] [--gate <text>] [--next <text>]
   dutyloops review <loop-id>
 `
@@ -174,6 +175,153 @@ async function listBlueprints() {
   }))
 }
 
+async function buildContextPacket(loopId, args = {}) {
+  const dir = blueprintPath(loopId)
+  const [blueprint, state, sources, latest, runs] = await Promise.all([
+    fs.readFile(path.join(dir, 'BLUEPRINT.md'), 'utf8'),
+    readJson(path.join(dir, 'state/state.json'), {}),
+    readJson(path.join(dir, 'context/sources.json'), {}),
+    readJson(path.join(dir, 'context/latest.json'), {}),
+    readJsonl(path.join(dir, 'logs/runs.jsonl'), 12),
+  ])
+  return {
+    schema_version: 'duty_loop_context_packet_v1',
+    generated_at: nowIso(),
+    loop_id: loopId,
+    trigger: String(args.trigger || 'manual'),
+    slot: String(args.slot || 'adhoc'),
+    reason: String(args.reason || ''),
+    blueprint_contract: blueprint,
+    current_state: state,
+    sources,
+    latest_context: latest,
+    recent_runs: runs,
+    runner_instruction: [
+      'Decide whether this turn is quiet, notify, ask, or bounded act.',
+      'Do not cross human gates. Ask one concrete question when a gate is needed.',
+      'Write back exactly one run row with dutyloops writeback or npm run writeback.',
+    ],
+  }
+}
+
+function compactFactText(fact) {
+  return [
+    fact.id,
+    fact.kind,
+    fact.title,
+    fact.name,
+    fact.state,
+    fact.summary,
+  ].filter(Boolean).join(' ').toLowerCase()
+}
+
+function factLooksMaterial(fact) {
+  const state = String(fact.state || '').toLowerCase()
+  const text = compactFactText(fact)
+  const quietStates = new Set(['routine', 'normal', 'low', 'ok', 'unchanged'])
+  if (quietStates.has(state)) return false
+  if (String(fact.risk_state || '').toLowerCase() === 'low' && !state) return false
+  const materialStates = new Set([
+    'actionable',
+    'at_risk',
+    'blocked',
+    'degraded',
+    'drifting',
+    'elevated',
+    'failing',
+    'overdue',
+    'opportunity',
+    'ready',
+    'risk',
+    'stale',
+    'unanswered',
+    'unresolved',
+  ])
+  if (materialStates.has(state)) return true
+  if (fact.ci === 'failing' || fact.review === 'changes_requested') return true
+  if (fact.mergeable === true && /merge|release|approval/.test(text)) return true
+  if (Number(fact.owner_wait_hours || 0) >= 24) return true
+  if (Number(fact.age_hours || 0) >= 24) return true
+  if (Number(fact.count || 0) >= 2 && /issue|question|request|cluster/.test(text)) return true
+  if (String(fact.risk_state || '').toLowerCase().match(/risk|high|elevated/)) return true
+  return /blocked|failing|stale|overdue|drift|at risk|high risk|elevated risk|spike|anomaly|complaint|unanswered|approval|ready for|needs owner|needs maintainer/.test(text)
+}
+
+function factNeedsGate(fact) {
+  const text = compactFactText(fact)
+  return [
+    /ask before/,
+    /(owner|maintainer|human) approval/,
+    /approval (is )?needed/,
+    /requires? (owner|maintainer|human) (approval|decision)/,
+    /ready for owner .*decision/,
+    /pricing approval/,
+    /before (sending|posting|publishing|replying|trading|merging|releasing|changing|deleting|closing|locking)/,
+    /(send|sending|post|posting|publish|publishing|public reply|posting publicly|replying publicly)/,
+    /(merge decision|trade|order placement|rollback|credential use|customer outreach|public commitment|official position)/,
+    /(security-sensitive|license acceptance|governance change|release publishing|publishing releases)/,
+  ].some((pattern) => pattern.test(text))
+}
+
+function sandboxEvaluate(packet) {
+  const facts = Array.isArray(packet.latest_context?.facts) ? packet.latest_context.facts : []
+  const sourceHealth = Array.isArray(packet.latest_context?.source_health) ? packet.latest_context.source_health : []
+  const staleSources = sourceHealth.filter((source) => {
+    const status = String(source.status || '').toLowerCase()
+    return status && !['ok', 'healthy', 'fixture'].includes(status)
+  })
+  const materialSignals = facts.filter(factLooksMaterial)
+  const gateSignals = materialSignals.filter(factNeedsGate)
+  let decision = 'quiet'
+  if (gateSignals.length) decision = 'ask'
+  else if (materialSignals.length) decision = 'notify'
+
+  const primary = gateSignals[0] || materialSignals[0] || facts[0] || null
+  const primarySummary = primary?.summary || primary?.title || primary?.id || 'No material signal'
+  const summary = decision === 'quiet'
+    ? staleSources.length
+      ? `No material change; ${staleSources.length} source needs freshness review.`
+      : 'No material change in sandbox fixture.'
+    : `${decision === 'ask' ? 'Human gate likely needed' : 'Material signal detected'}: ${primarySummary}`
+  const gate = gateSignals.length
+    ? `Approve the next public, external, destructive, financial, production, or commitment-bearing action for ${gateSignals[0].id || packet.loop_id}?`
+    : null
+  const next = decision === 'quiet'
+    ? 'Keep the loop quiet and refresh sources on the next trigger.'
+    : decision === 'ask'
+      ? 'Ask the owner for one concrete decision before acting.'
+      : 'Notify with the primary signal and a bounded next check.'
+
+  return {
+    schema_version: 'duty_loop_sandbox_run_v1',
+    generated_at: nowIso(),
+    loop_id: packet.loop_id,
+    slot: packet.slot,
+    trigger: packet.trigger,
+    decision,
+    material_change: materialSignals.length > 0,
+    summary,
+    gate,
+    next,
+    signals: materialSignals.map((fact) => ({
+      id: fact.id || null,
+      kind: fact.kind || null,
+      state: fact.state || null,
+      summary: fact.summary || fact.title || fact.name || null,
+      needs_gate: factNeedsGate(fact),
+    })),
+    source_health: {
+      checked: sourceHealth.length,
+      stale: staleSources.length,
+    },
+    feedback: [
+      materialSignals.length ? 'Fixture exposes at least one material-change path.' : 'Fixture may be too quiet to validate notification behavior.',
+      gateSignals.length ? 'Fixture exercises a human-gate path.' : 'Fixture does not exercise a human-gate path.',
+      facts.length ? 'Context uses compact facts.' : 'Context/latest.json has no facts; add representative fixture data.',
+    ],
+  }
+}
+
 async function commandDoctor() {
   const checks = {
     root: ROOT,
@@ -277,33 +425,46 @@ async function commandStatus(args) {
 async function commandContext(args) {
   const loopId = safeLoopId(args._[1])
   const dir = blueprintPath(loopId)
-  const [blueprint, state, sources, latest, runs] = await Promise.all([
-    fs.readFile(path.join(dir, 'BLUEPRINT.md'), 'utf8'),
-    readJson(path.join(dir, 'state/state.json'), {}),
-    readJson(path.join(dir, 'context/sources.json'), {}),
-    readJson(path.join(dir, 'context/latest.json'), {}),
-    readJsonl(path.join(dir, 'logs/runs.jsonl'), 12),
-  ])
-  const packet = {
-    schema_version: 'duty_loop_context_packet_v1',
-    generated_at: nowIso(),
-    loop_id: loopId,
-    trigger: String(args.trigger || 'manual'),
-    slot: String(args.slot || 'adhoc'),
-    reason: String(args.reason || ''),
-    blueprint_contract: blueprint,
-    current_state: state,
-    sources,
-    latest_context: latest,
-    recent_runs: runs,
-    runner_instruction: [
-      'Decide whether this turn is quiet, notify, ask, or bounded act.',
-      'Do not cross human gates. Ask one concrete question when a gate is needed.',
-      'Write back exactly one run row with dutyloops writeback or npm run writeback.',
-    ],
-  }
+  const packet = await buildContextPacket(loopId, args)
   await writeJson(path.join(dir, 'context/latest-packet.json'), packet)
   console.log(JSON.stringify(packet, null, 2))
+}
+
+async function commandSandbox(args) {
+  const loopIds = args.all
+    ? (await listBlueprints()).map((loop) => loop.loop_id)
+    : [safeLoopId(args._[1])]
+  const results = []
+  for (const loopId of loopIds) {
+    const packet = await buildContextPacket(loopId, {
+      ...args,
+      trigger: args.trigger || 'sandbox',
+      slot: args.slot || 'sandbox',
+    })
+    const result = sandboxEvaluate(packet)
+    if (args.writeback) {
+      const dir = blueprintPath(loopId)
+      await appendJsonl(path.join(dir, 'logs/runs.jsonl'), {
+        schema_version: 'duty_loop_run_v1',
+        ts: result.generated_at,
+        loop_id: loopId,
+        decision: result.decision,
+        summary: result.summary,
+        material_change: result.material_change,
+        gate: result.gate,
+        next: result.next,
+        sandbox: true,
+      })
+    }
+    results.push(result)
+  }
+  console.log(JSON.stringify({
+    ok: true,
+    schema_version: 'duty_loop_sandbox_batch_v1',
+    generated_at: nowIso(),
+    count: results.length,
+    results,
+  }, null, 2))
 }
 
 async function commandWriteback(args) {
@@ -378,6 +539,7 @@ async function main() {
   if (command === 'copy') return commandCopy(args)
   if (command === 'status') return commandStatus(args)
   if (command === 'context') return commandContext(args)
+  if (command === 'sandbox') return commandSandbox(args)
   if (command === 'writeback') return commandWriteback(args)
   if (command === 'review') return commandReview(args)
   throw new Error(`unknown command: ${command}`)

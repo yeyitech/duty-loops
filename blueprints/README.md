@@ -22,6 +22,42 @@ roadmap drift, and community signals. This loop complements PR Keeper by
 focusing on maintainer attention and public repo health rather than individual
 code-review state.
 
+## Release Captain
+
+[Open blueprint](release-captain/BLUEPRINT.md)
+
+Use when the worker should watch release readiness across milestones, blockers,
+CI, package dry-runs, changelog, docs, and public release gates.
+
+## Dependency Sentinel
+
+[Open blueprint](dependency-sentinel/BLUEPRINT.md)
+
+Use when the worker should watch dependency releases, security advisories,
+license changes, deprecations, and compatibility risk without creating update
+noise.
+
+## Inbox Triage
+
+[Open blueprint](inbox-triage/BLUEPRINT.md)
+
+Use when the worker should watch email, chat, and task inboxes for owner
+attention, response drafts, deadlines, and message clusters.
+
+## Meeting Brief
+
+[Open blueprint](meeting-brief/BLUEPRINT.md)
+
+Use when the worker should prepare meeting briefs, detect prep gaps, track
+action items, and protect follow-up quality.
+
+## Customer Success Watch
+
+[Open blueprint](customer-success-watch/BLUEPRINT.md)
+
+Use when the worker should watch customer health, usage shifts, support
+clusters, renewal timing, and promised follow-ups.
+
 ## Market Watch
 
 [Open blueprint](market-watch/BLUEPRINT.md)

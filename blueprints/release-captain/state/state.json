@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_state_v1",
+  "loop_id": "release-captain",
+  "title": "Release Captain",
+  "created_at": "2026-07-08T00:00:00.000Z",
+  "memory": [
+    {
+      "kind": "policy",
+      "text": "Publishing releases, creating tags, changing scope, and making public date commitments are human gates."
+    },
+    {
+      "kind": "preference",
+      "text": "Prefer checklist deltas over repeating the full release plan."
+    }
+  ],
+  "open_gates": [],
+  "notification": {
+    "last_notified_at": null,
+    "recent_keys": []
+  }
+}

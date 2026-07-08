@@ -1,0 +1,37 @@
+{
+  "schema_version": "duty_loop_latest_context_v1",
+  "generated_at": "2026-07-08T00:00:00.000Z",
+  "facts": [
+    {
+      "id": "advisory-parser-lib",
+      "kind": "security_advisory",
+      "state": "actionable",
+      "severity": "high",
+      "summary": "A direct parser dependency has a high-severity advisory with a patched version available; upgrade requires maintainer approval."
+    },
+    {
+      "id": "major-cli-lib",
+      "kind": "dependency_release",
+      "state": "risk",
+      "summary": "CLI helper library released a major version with breaking flag parsing changes; draft compatibility test plan before upgrade."
+    },
+    {
+      "id": "patch-format-lib",
+      "kind": "dependency_release",
+      "state": "routine",
+      "summary": "Patch release has no exposure and can remain quiet."
+    }
+  ],
+  "source_health": [
+    {
+      "source": "package-registry",
+      "status": "fixture",
+      "checked_at": "2026-07-08T00:00:00.000Z"
+    },
+    {
+      "source": "security-advisories",
+      "status": "fixture",
+      "checked_at": "2026-07-08T00:00:00.000Z"
+    }
+  ]
+}

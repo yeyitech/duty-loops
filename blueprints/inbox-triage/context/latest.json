@@ -1,0 +1,35 @@
+{
+  "schema_version": "duty_loop_latest_context_v1",
+  "generated_at": "2026-07-08T00:00:00.000Z",
+  "facts": [
+    {
+      "id": "thread-renewal-pricing",
+      "kind": "message_thread",
+      "state": "blocked",
+      "sender_priority": "high",
+      "age_hours": 18,
+      "summary": "Customer asks whether renewal pricing can be held for another week; owner approval is needed before replying."
+    },
+    {
+      "id": "thread-vendor-fyi",
+      "kind": "message_thread",
+      "state": "routine",
+      "sender_priority": "low",
+      "summary": "Vendor sent an FYI product update with no requested action."
+    },
+    {
+      "id": "cluster-expense-policy",
+      "kind": "message_cluster",
+      "state": "actionable",
+      "count": 4,
+      "summary": "Four internal messages ask the same reimbursement-policy question; draft a reusable answer but ask before sending broadly."
+    }
+  ],
+  "source_health": [
+    {
+      "source": "message-inbox",
+      "status": "fixture",
+      "checked_at": "2026-07-08T00:00:00.000Z"
+    }
+  ]
+}

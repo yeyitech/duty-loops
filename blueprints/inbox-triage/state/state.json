@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_state_v1",
+  "loop_id": "inbox-triage",
+  "title": "Inbox Triage",
+  "created_at": "2026-07-08T00:00:00.000Z",
+  "memory": [
+    {
+      "kind": "policy",
+      "text": "Sending messages, making commitments, and sharing private information are human gates."
+    },
+    {
+      "kind": "preference",
+      "text": "Prefer grouped asks over one notification per message."
+    }
+  ],
+  "open_gates": [],
+  "notification": {
+    "last_notified_at": null,
+    "recent_keys": []
+  }
+}

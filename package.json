@@ -27,6 +27,7 @@
     "copy": "node bin/dutyloops.mjs copy",
     "status": "node bin/dutyloops.mjs status",
     "context": "node bin/dutyloops.mjs context",
+    "sandbox": "node bin/dutyloops.mjs sandbox",
     "writeback": "node bin/dutyloops.mjs writeback",
     "review": "node bin/dutyloops.mjs review"
   },

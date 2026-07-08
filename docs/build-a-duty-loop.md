@@ -56,7 +56,25 @@ npm run context -- <loop-id> --slot manual-check --trigger manual
 
 Then ask Codex or Claude to run the loop with the matching skill.
 
-## 6. Schedule It
+## 6. Run A Sandbox Check
+
+Before wiring a real scheduler, run the fixture through the deterministic
+sandbox:
+
+```bash
+npm run sandbox -- <loop-id> --slot sandbox-check --trigger sandbox
+```
+
+For all blueprints:
+
+```bash
+npm run sandbox -- --all --slot sandbox-check --trigger sandbox
+```
+
+The sandbox does not replace the model. It checks whether the fixture exercises
+quiet, notify, ask, material-change, and human-gate paths.
+
+## 7. Schedule It
 
 Use the host you already trust:
 
@@ -69,7 +87,7 @@ Use the host you already trust:
 
 The scheduler should wake the worker. It should not own the judgment.
 
-## 7. Review After Real Runs
+## 8. Review After Real Runs
 
 ```bash
 npm run review -- <loop-id>

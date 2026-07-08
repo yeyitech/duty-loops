@@ -82,6 +82,11 @@ Keep it lightweight: context, state, logs, notification policy, and human gates.
 
 - [PR Keeper](blueprints/pr-keeper/BLUEPRINT.md): PR, CI, review, and merge-readiness worker.
 - [Repo Steward](blueprints/repo-steward/BLUEPRINT.md): GitHub repository operations, community, docs, and release-readiness worker.
+- [Release Captain](blueprints/release-captain/BLUEPRINT.md): milestone, changelog, package, docs, and release-readiness worker.
+- [Dependency Sentinel](blueprints/dependency-sentinel/BLUEPRINT.md): dependency release, security advisory, license, and compatibility worker.
+- [Inbox Triage](blueprints/inbox-triage/BLUEPRINT.md): email/chat/task attention and response-gate worker.
+- [Meeting Brief](blueprints/meeting-brief/BLUEPRINT.md): calendar, prep, action-item, and follow-up worker.
+- [Customer Success Watch](blueprints/customer-success-watch/BLUEPRINT.md): account health, support, renewal, and follow-up worker.
 - [Market Watch](blueprints/market-watch/BLUEPRINT.md): market theme, portfolio exposure, news, and post-close review worker.
 - [Metric Sentinel](blueprints/metric-sentinel/BLUEPRINT.md): product, business, or operations metric worker.
 - [Content Pulse](blueprints/content-pulse/BLUEPRINT.md): publishing cadence, audience response, and draft opportunity worker.
@@ -97,6 +102,8 @@ npm run new -- <loop-id> --title "<Title>" --scenario "<responsibility>"
 npm run copy -- <source-loop-id> <new-loop-id> --title "<Title>"
 npm run status -- <loop-id>
 npm run context -- <loop-id> --slot <slot> --trigger <trigger>
+npm run sandbox -- <loop-id>
+npm run sandbox -- --all
 npm run writeback -- <loop-id> --decision quiet --summary "No material change"
 npm run review -- <loop-id>
 ```
@@ -134,8 +141,10 @@ Duty Loops uses a small control loop:
 7. review the loop periodically for noise, stale context, and missing gates.
 
 Read [docs/method.md](docs/method.md) for the design method,
-[docs/build-a-duty-loop.md](docs/build-a-duty-loop.md) for the build path, and
-[docs/visuals.md](docs/visuals.md) for logo and diagram assets.
+[docs/role-mapping.md](docs/role-mapping.md) for real-world role mapping,
+[docs/build-a-duty-loop.md](docs/build-a-duty-loop.md) for the build path,
+[docs/sandbox-feedback.md](docs/sandbox-feedback.md) for the first sandbox
+run, and [docs/visuals.md](docs/visuals.md) for logo and diagram assets.
 
 ## Codex And Claude
 

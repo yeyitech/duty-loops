@@ -20,3 +20,13 @@ blueprints/*/state/local.json
 !blueprints/content-pulse/context/latest.json
 !blueprints/repo-steward/logs/runs.jsonl
 !blueprints/repo-steward/context/latest.json
+!blueprints/inbox-triage/logs/runs.jsonl
+!blueprints/inbox-triage/context/latest.json
+!blueprints/meeting-brief/logs/runs.jsonl
+!blueprints/meeting-brief/context/latest.json
+!blueprints/customer-success-watch/logs/runs.jsonl
+!blueprints/customer-success-watch/context/latest.json
+!blueprints/release-captain/logs/runs.jsonl
+!blueprints/release-captain/context/latest.json
+!blueprints/dependency-sentinel/logs/runs.jsonl
+!blueprints/dependency-sentinel/context/latest.json

@@ -71,3 +71,13 @@ Loop/control engineering adds wakeup, decision, writeback, review, and gates.
 
 The value is not the phrase. The value is a scene-specific worker that can stay
 useful over time without the user babysitting every step.
+
+## Sandbox Feedback
+
+Use `npm run sandbox -- <loop-id>` to validate a blueprint fixture before wiring
+real connectors. The sandbox is intentionally conservative and deterministic:
+it verifies that compact facts can produce quiet, notify, ask, and gate signals.
+
+It does not replace Codex or Claude. It is a loop-core feedback tool for finding
+bad fixture design, noisy gate wording, stale source handling, and missing
+material-change coverage.

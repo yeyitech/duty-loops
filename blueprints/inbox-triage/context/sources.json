@@ -1,0 +1,21 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "message-inbox",
+      "kind": "messages",
+      "description": "Email, chat, and support messages grouped into compact threads with sender priority and age",
+      "connector": "mail API, Feishu, Slack, Gmail export, local fixture, or manual digest"
+    },
+    {
+      "id": "owner-commitments",
+      "kind": "tasks",
+      "description": "Open commitments, delegated tasks, due dates, and decisions waiting on the owner",
+      "connector": "task app, calendar, local markdown, or manual context"
+    }
+  ],
+  "notes": [
+    "Do not commit private message bodies; store compact summaries and evidence pointers.",
+    "Sending or committing on behalf of the owner remains a human gate."
+  ]
+}
