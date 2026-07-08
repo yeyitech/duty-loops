@@ -1,0 +1,36 @@
+{
+  "name": "dutyloops",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "A lightweight kit for scene-specific AI agents that stay on duty.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yeyitech/duty-loops.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yeyitech/duty-loops/issues"
+  },
+  "homepage": "https://github.com/yeyitech/duty-loops#readme",
+  "keywords": [
+    "ai-agents",
+    "codex",
+    "claude",
+    "loop-engineering",
+    "agent-skills",
+    "automation"
+  ],
+  "scripts": {
+    "doctor": "node bin/dutyloops.mjs doctor",
+    "list": "node bin/dutyloops.mjs list",
+    "new": "node bin/dutyloops.mjs new",
+    "copy": "node bin/dutyloops.mjs copy",
+    "status": "node bin/dutyloops.mjs status",
+    "context": "node bin/dutyloops.mjs context",
+    "writeback": "node bin/dutyloops.mjs writeback",
+    "review": "node bin/dutyloops.mjs review"
+  },
+  "bin": {
+    "dutyloops": "./bin/dutyloops.mjs"
+  }
+}

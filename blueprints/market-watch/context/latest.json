@@ -1,0 +1,44 @@
+{
+  "schema_version": "duty_loop_latest_context_v1",
+  "generated_at": "2026-07-08T00:00:00.000Z",
+  "facts": [
+    {
+      "id": "theme-ai-chain",
+      "kind": "theme",
+      "name": "AI infrastructure chain",
+      "state": "mixed",
+      "breadth": 0.54,
+      "vwap_bias": 0.2,
+      "leaders": ["optical module", "liquid cooling"],
+      "laggards": ["application software"],
+      "summary": "Theme is positive but not broad enough for high-confidence expansion."
+    },
+    {
+      "id": "portfolio-risk",
+      "kind": "portfolio",
+      "exposure_pct": 0.08,
+      "risk_state": "low",
+      "summary": "Current exposure remains below the starter risk band."
+    },
+    {
+      "id": "news-catalyst-1",
+      "kind": "news",
+      "tone": "positive",
+      "mapped_theme": "AI infrastructure chain",
+      "summary": "Overnight global AI capex narrative supports infrastructure suppliers, but local confirmation is required."
+    }
+  ],
+  "source_health": [
+    {
+      "source": "theme-market-snapshot",
+      "status": "fixture",
+      "checked_at": "2026-07-08T00:00:00.000Z"
+    },
+    {
+      "source": "portfolio-ledger",
+      "status": "fixture",
+      "checked_at": "2026-07-08T00:00:00.000Z"
+    }
+  ]
+}
+

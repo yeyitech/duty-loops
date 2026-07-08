@@ -1,0 +1,28 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "publishing-calendar",
+      "kind": "calendar",
+      "description": "Planned topics, target slots, owner constraints, and campaign dates",
+      "connector": "Feishu, Notion, local markdown, spreadsheet, or calendar API"
+    },
+    {
+      "id": "post-performance",
+      "kind": "analytics",
+      "description": "Recent post impressions, saves, comments, shares, and baseline comparison",
+      "connector": "platform API, export, browser collector, or manual snapshot"
+    },
+    {
+      "id": "comment-clusters",
+      "kind": "audience_feedback",
+      "description": "Grouped comments, repeated questions, objections, and sentiment shifts",
+      "connector": "platform comments, Feishu feedback, support inbox, or manual export"
+    }
+  ],
+  "notes": [
+    "Do not store private customer details in fixtures.",
+    "Drafting is allowed; publishing remains a human gate."
+  ]
+}
+

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Duty Loop Designer"
+  short_description: "Design a lightweight AI worker that stays on duty."
+  default_prompt: "Use this skill to turn my scenario into a lightweight Duty Loop."

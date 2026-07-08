@@ -1,0 +1,19 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.DS_Store
+
+# Runtime state for real blueprints. Keep curated fixtures committed explicitly.
+blueprints/*/logs/*.jsonl
+blueprints/*/context/latest.json
+blueprints/*/context/latest-packet.json
+blueprints/*/state/local.json
+!blueprints/pr-keeper/logs/runs.jsonl
+!blueprints/pr-keeper/context/latest.json
+!blueprints/market-watch/logs/runs.jsonl
+!blueprints/market-watch/context/latest.json
+!blueprints/metric-sentinel/logs/runs.jsonl
+!blueprints/metric-sentinel/context/latest.json
+!blueprints/content-pulse/logs/runs.jsonl
+!blueprints/content-pulse/context/latest.json

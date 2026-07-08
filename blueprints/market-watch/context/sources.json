@@ -1,0 +1,28 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "theme-market-snapshot",
+      "kind": "market_data",
+      "description": "Watched theme breadth, sector states, leaders, VWAP, and index backdrop",
+      "connector": "replace fixture with broker, market API, browser, or local collector"
+    },
+    {
+      "id": "portfolio-ledger",
+      "kind": "portfolio",
+      "description": "User-maintained positions, costs, thesis, and risk rules",
+      "connector": "local JSON ledger or authorized portfolio connector"
+    },
+    {
+      "id": "news-flow",
+      "kind": "news",
+      "description": "Catalysts, risks, and source health mapped to watched themes",
+      "connector": "RSS, search, Feishu, browser, or research feed"
+    }
+  ],
+  "notes": [
+    "Keep credentials in .env or host connector settings.",
+    "This blueprint supports decision assistance only; trading remains a human gate."
+  ]
+}
+

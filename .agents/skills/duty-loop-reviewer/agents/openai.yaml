@@ -1,0 +1,4 @@
+interface:
+  display_name: "Duty Loop Reviewer"
+  short_description: "Review whether a Duty Loop is useful, quiet, and safe."
+  default_prompt: "Use this skill to review this Duty Loop and suggest small improvements."

@@ -1,0 +1,28 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "core-metrics",
+      "kind": "metrics",
+      "description": "Current KPI values, baseline windows, variance bands, and freshness",
+      "connector": "warehouse query, BI API, metrics API, or CSV export"
+    },
+    {
+      "id": "release-events",
+      "kind": "release",
+      "description": "Deploys, feature flags, experiments, and known changes",
+      "connector": "GitHub, CI, release notes, or internal deploy feed"
+    },
+    {
+      "id": "incident-state",
+      "kind": "incident",
+      "description": "Active incidents, alerts, and owner notes",
+      "connector": "PagerDuty, Slack, Feishu, status page, or local notes"
+    }
+  ],
+  "notes": [
+    "Keep raw logs out of context/latest.json; store compact facts and evidence pointers.",
+    "Metric changes should be interpreted, not blindly thresholded."
+  ]
+}
+

@@ -1,0 +1,15 @@
+{
+  "schema_version": "duty_loop_sources_v1",
+  "sources": [
+    {
+      "id": "github-prs",
+      "kind": "github",
+      "description": "PR queue, review state, CI state, and mergeability",
+      "connector": "manual fixture in context/latest.json for the blueprint"
+    }
+  ],
+  "notes": [
+    "Replace this fixture with a GitHub CLI, GitHub MCP, or API connector when applying the blueprint to a real repository.",
+    "Keep tokens and private repository details out of this file."
+  ]
+}

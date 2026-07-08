@@ -1,0 +1,4 @@
+interface:
+  display_name: "Duty Loop Runner"
+  short_description: "Run one scheduled or event-triggered worker turn."
+  default_prompt: "Use this skill to run the next turn for this Duty Loop."

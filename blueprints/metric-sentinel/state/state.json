@@ -1,0 +1,22 @@
+{
+  "schema_version": "duty_loop_state_v1",
+  "loop_id": "metric-sentinel",
+  "title": "Metric Sentinel",
+  "created_at": "2026-07-08T00:00:00.000Z",
+  "memory": [
+    {
+      "kind": "policy",
+      "text": "Do not recommend rollback without linking the anomaly to release or incident evidence."
+    },
+    {
+      "kind": "preference",
+      "text": "Daily digest is acceptable for normal metrics; immediate notify only for actionable anomalies."
+    }
+  ],
+  "open_gates": [],
+  "notification": {
+    "last_notified_at": null,
+    "recent_keys": []
+  }
+}
+
